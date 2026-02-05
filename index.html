@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passive Voice Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23667eea" width="1200" height="800"/><g fill-opacity="0.1"><circle fill="%23fff" cx="200" cy="150" r="80"/><circle fill="%23fff" cx="600" cy="200" r="100"/><circle fill="%23fff" cx="1000" cy="300" r="90"/><circle fill="%23fff" cx="300" cy="500" r="70"/><circle fill="%23fff" cx="800" cy="600" r="85"/><text x="100" y="100" font-size="60" fill="%23fff" opacity="0.15">ABC</text><text x="500" y="400" font-size="70" fill="%23fff" opacity="0.15">abc</text><text x="900" y="250" font-size="65" fill="%23fff" opacity="0.15">123</text><text x="200" y="650" font-size="55" fill="%23fff" opacity="0.15">?!</text><text x="700" y="150" font-size="50" fill="%23fff" opacity="0.15">✓✗</text><path d="M50,400 Q200,350 350,400" stroke="%23fff" stroke-width="3" fill="none" opacity="0.2"/><path d="M400,200 Q550,150 700,200" stroke="%23fff" stroke-width="3" fill="none" opacity="0.2"/><path d="M750,500 Q900,450 1050,500" stroke="%23fff" stroke-width="3" fill="none" opacity="0.2"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated book pages effect */
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 25s infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 120px;
+            background: white;
+            border-radius: 5px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .shape:nth-child(2) {
+            width: 80px;
+            height: 100px;
+            background: white;
+            border-radius: 5px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 3s;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .shape:nth-child(3) {
+            width: 90px;
+            height: 110px;
+            background: white;
+            border-radius: 5px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 6s;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .shape:nth-child(4) {
+            width: 70px;
+            height: 90px;
+            background: white;
+            border-radius: 5px;
+            top: 20%;
+            left: 70%;
+            animation-delay: 2s;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .shape:nth-child(5) {
+            width: 85px;
+            height: 105px;
+            background: white;
+            border-radius: 5px;
+            top: 50%;
+            left: 50%;
+            animation-delay: 4s;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-25px) rotate(3deg);
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            position: relative;
+            z-index: 10;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: #a6c1ee;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 1.5em;
+            color: #fbc2eb;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 30px;
+            background: #ecf0f1;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar-correct {
+            height: 100%;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .progress-bar-incorrect {
+            height: 100%;
+            background: linear-gradient(90deg, #c0392b, #e74c3c);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c3e50;
+            font-weight: bold;
+            pointer-events: none;
+            text-shadow: 0 0 3px white;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+        }
+
+        .question-number {
+            color: #a6c1ee;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .blank {
+            color: #fbc2eb;
+            font-weight: bold;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: #a6c1ee;
+            box-shadow: 0 0 15px rgba(166, 193, 238, 0.3);
+            background: white;
+        }
+
+        .answer-feedback {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .answer-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .answer-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #a6c1ee 0%, #fbc2eb 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(166, 193, 238, 0.3);
+            min-width: 120px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(166, 193, 238, 0.4);
+        }
+
+        button:disabled {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            opacity: 0.6;
+        }
+
+        .results {
+            text-align: center;
+            display: none;
+        }
+
+        .results h2 {
+            color: #a6c1ee;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .score {
+            font-size: 3em;
+            color: #27ae60;
+            margin: 20px 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .score.fail {
+            color: #e74c3c;
+        }
+
+        .start-screen {
+            text-align: center;
+        }
+
+        .start-screen p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .start-button {
+            font-size: 1.3em;
+            padding: 15px 50px;
+            margin-top: 20px;
+        }
+
+        .quiz-content {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #a6c1ee;
+            box-shadow: 0 0 10px rgba(166, 193, 238, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating shapes for background animation -->
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+
+    <div class="container">
+        <h1>Passive Voice Quiz</h1>
+        
+        <div class="start-screen" id="startScreen">
+            <p>Test your knowledge of passive voice!</p>
+            <p>📝 10 questions per attempt</p>
+            <p>⏱️ 5 minutes to complete</p>
+            <p>🎯 Choose the correct passive form</p>
+            
+            <div class="form-group">
+                <label for="studentName">Your Name:</label>
+                <input type="text" id="studentName" placeholder="Enter your name" required>
+            </div>
+            
+            <button class="start-button" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <div class="timer" id="timer">Time: 5:00</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar-correct" id="progressBarCorrect"></div>
+                <div class="progress-bar-incorrect" id="progressBarIncorrect"></div>
+                <div class="progress-text" id="progressText">0/10</div>
+            </div>
+
+            <div class="question-container" id="questionContainer">
+                <div class="question-number" id="questionNumber">Question 1</div>
+                <div class="question-text" id="questionText"></div>
+                <input type="text" class="answer-input" id="answerInput" placeholder="Type your answer here..." autocomplete="off">
+                <div class="answer-feedback" id="answerFeedback"></div>
+            </div>
+
+            <div class="nav-buttons">
+                <button id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+                <button id="nextBtn" onclick="nextQuestion()">Next</button>
+                <button id="submitBtn" onclick="submitQuiz()" style="display: none;">Submit Quiz</button>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <h2>Quiz Completed!</h2>
+            <div class="score" id="finalScore"></div>
+            <p id="resultMessage"></p>
+            <button onclick="location.reload()">Take Quiz Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questionBank = [
+            {q: "The students ___ (teach) by Ms. Anna almost every day.", correct: "are taught"},
+            {q: "This song ___ (hear) on the radio every day.", correct: "is heard"},
+            {q: "The letter ___ (not/receive) when I called him.", correct: "was not received"},
+            {q: "The lights ___ (not/turn off) when we arrived home.", correct: "were not turned off"},
+            {q: "Our house ___ (not/clean) last Saturday.", correct: "was not cleaned"},
+            {q: "The picture ___ (take) by my friend when we were both students.", correct: "was taken"},
+            {q: "The telephone ___ (invent) by Alexander Graham Bell in 1876.", correct: "was invented"},
+            {q: "English ___ (speak) in many countries around the world.", correct: "is spoken"},
+            {q: "The book ___ (write) by a famous author last year.", correct: "was written"},
+            {q: "The windows ___ (clean) every week.", correct: "are cleaned"},
+            {q: "The car ___ (repair) at the garage yesterday.", correct: "was repaired"},
+            {q: "Letters ___ (deliver) by the postman every morning.", correct: "are delivered"},
+            {q: "The movie ___ (watch) by millions of people last weekend.", correct: "was watched"},
+            {q: "Homework ___ (assign) by the teacher at the end of class.", correct: "is assigned"},
+            {q: "The building ___ (construct) in 2010.", correct: "was constructed"},
+            {q: "Coffee ___ (grow) in Brazil and Colombia.", correct: "is grown"},
+            {q: "The accident ___ (cause) by bad weather conditions.", correct: "was caused"},
+            {q: "The dishes ___ (wash) after dinner every night.", correct: "are washed"},
+            {q: "The story ___ (tell) to me by my grandmother.", correct: "was told"},
+            {q: "The flowers ___ (water) every morning.", correct: "are watered"},
+            {q: "The painting ___ (steal) from the museum last night.", correct: "was stolen"},
+            {q: "Emails ___ (send) to all employees every Monday.", correct: "are sent"},
+            {q: "The bridge ___ (build) by a famous engineer.", correct: "was built"},
+            {q: "The game ___ (play) on a large field.", correct: "is played"},
+            {q: "The documents ___ (lose) during the move.", correct: "were lost"},
+            {q: "New employees ___ (train) every month.", correct: "are trained"},
+            {q: "The castle ___ (destroy) in the war.", correct: "was destroyed"},
+            {q: "The reports ___ (submit) before the deadline.", correct: "are submitted"},
+            {q: "The song ___ (compose) by a talented musician.", correct: "was composed"},
+            {q: "The streets ___ (clean) early in the morning.", correct: "are cleaned"},
+            {q: "The prize ___ (win) by our team last year.", correct: "was won"},
+            {q: "Important decisions ___ (make) at the meeting.", correct: "are made"},
+            {q: "The treasure ___ (find) by archaeologists in 1995.", correct: "was found"},
+            {q: "The products ___ (manufacture) in China.", correct: "are manufactured"},
+            {q: "The criminal ___ (catch) by the police yesterday.", correct: "was caught"},
+            {q: "These computers ___ (use) by the students.", correct: "are used"},
+            {q: "The cake ___ (bake) by my mother this morning.", correct: "was baked"},
+            {q: "Newspapers ___ (print) every day.", correct: "are printed"},
+            {q: "The championship ___ (win) by Brazil in 2002.", correct: "was won"},
+            {q: "The medicine ___ (prescribe) by the doctor.", correct: "is prescribed"},
+            {q: "The message ___ (receive) this morning.", correct: "was received"},
+            {q: "These shoes ___ (make) in Italy.", correct: "are made"},
+            {q: "The film ___ (direct) by Steven Spielberg.", correct: "was directed"},
+            {q: "The rooms ___ (book) in advance.", correct: "are booked"},
+            {q: "The accident ___ (report) to the police immediately.", correct: "was reported"},
+            {q: "The furniture ___ (arrange) by the interior designer.", correct: "is arranged"},
+            {q: "The documents ___ (sign) yesterday.", correct: "were signed"},
+            {q: "Breakfast ___ (serve) from 7 to 10 AM.", correct: "is served"},
+            {q: "The monument ___ (erect) in memory of the soldiers.", correct: "was erected"},
+            {q: "The students ___ (examine) next week.", correct: "are examined"},
+            {q: "The invitation ___ (accept) by all the guests.", correct: "was accepted"},
+            {q: "The crops ___ (harvest) in autumn.", correct: "are harvested"},
+            {q: "The discovery ___ (announce) at the conference.", correct: "was announced"},
+            {q: "The children ___ (teach) good manners at home.", correct: "are taught"},
+            {q: "The package ___ (deliver) to the wrong address.", correct: "was delivered"},
+            {q: "The rules ___ (explain) to everyone.", correct: "are explained"},
+            {q: "The poem ___ (memorize) by all the students.", correct: "was memorized"},
+            {q: "The vegetables ___ (grow) organically.", correct: "are grown"},
+            {q: "The problem ___ (solve) by the engineer.", correct: "was solved"},
+            {q: "The concert ___ (cancel) due to bad weather.", correct: "was cancelled"}
+        ];
+
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let answers = [];
+        let correctAnswers = 0;
+        let timerInterval;
+        let timeLeft = 300; // 5 minutes in seconds
+        let studentName = "";
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function startQuiz() {
+            const nameInput = document.getElementById('studentName');
+            
+            studentName = nameInput.value.trim();
+            
+            if (!studentName) {
+                alert('Please enter your name before starting the quiz.');
+                return;
+            }
+
+            currentQuestions = shuffleArray(questionBank).slice(0, 10);
+            answers = new Array(10).fill('');
+            
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('quizContent').style.display = 'block';
+            
+            displayQuestion();
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function displayQuestion() {
+            const question = currentQuestions[currentQuestionIndex];
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1}`;
+            document.getElementById('questionText').innerHTML = question.q.replace('___', '<span class="blank">___</span>');
+            
+            const answerInput = document.getElementById('answerInput');
+            answerInput.value = answers[currentQuestionIndex] || '';
+            answerInput.focus();
+            
+            // Hide feedback when displaying question
+            document.getElementById('answerFeedback').style.display = 'none';
+            
+            updateNavigationButtons();
+            updateProgressBar();
+        }
+
+        function selectOption(option) {
+            // This function is no longer needed but kept for compatibility
+            answers[currentQuestionIndex] = option;
+            displayQuestion();
+        }
+
+        function updateProgressBar() {
+            const answered = answers.filter(a => a !== null && a !== '').length;
+            
+            // Count correct and incorrect answers so far
+            let correct = 0;
+            let incorrect = 0;
+            
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i] !== null && answers[i] !== '') {
+                    // Normalize both answers for comparison (lowercase, trim spaces)
+                    const studentAnswer = answers[i].toLowerCase().trim();
+                    const correctAnswer = currentQuestions[i].correct.toLowerCase().trim();
+                    
+                    if (studentAnswer === correctAnswer) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                    }
+                }
+            }
+            
+            const correctPercentage = (correct / 10) * 100;
+            const incorrectPercentage = (incorrect / 10) * 100;
+            
+            document.getElementById('progressBarCorrect').style.width = correctPercentage + '%';
+            document.getElementById('progressBarIncorrect').style.width = incorrectPercentage + '%';
+            document.getElementById('progressText').textContent = `${answered}/10 (✓${correct} ✗${incorrect})`;
+        }
+
+        function updateNavigationButtons() {
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            
+            if (currentQuestionIndex === 9) {
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('submitBtn').style.display = 'block';
+            } else {
+                document.getElementById('nextBtn').style.display = 'block';
+                document.getElementById('submitBtn').style.display = 'none';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < 9) {
+                // Save current answer before moving to next question
+                const answerInput = document.getElementById('answerInput');
+                answers[currentQuestionIndex] = answerInput.value.trim();
+                
+                currentQuestionIndex++;
+                displayQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                // Save current answer before moving to previous question
+                const answerInput = document.getElementById('answerInput');
+                answers[currentQuestionIndex] = answerInput.value.trim();
+                
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        }
+
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            correctAnswers = 0;
+            for (let i = 0; i < currentQuestions.length; i++) {
+                if (answers[i]) {
+                    // Normalize both answers for comparison (lowercase, trim spaces)
+                    const studentAnswer = answers[i].toLowerCase().trim();
+                    const correctAnswer = currentQuestions[i].correct.toLowerCase().trim();
+                    
+                    if (studentAnswer === correctAnswer) {
+                        correctAnswers++;
+                    }
+                }
+            }
+            
+            const score = (correctAnswers / 10) * 100;
+            const timeTaken = 300 - timeLeft;
+            const minutes = Math.floor(timeTaken / 60);
+            const seconds = timeTaken % 60;
+            
+            sendToGoogleSheets(score, `${minutes}:${seconds.toString().padStart(2, '0')}`);
+            
+            document.getElementById('quizContent').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            
+            const scoreElement = document.getElementById('finalScore');
+            scoreElement.textContent = `${correctAnswers}/10 (${score}%)`;
+            
+            if (score >= 70) {
+                scoreElement.className = 'score';
+                document.getElementById('resultMessage').textContent = 'Great job! You passed! 🎉';
+            } else {
+                scoreElement.className = 'score fail';
+                document.getElementById('resultMessage').textContent = 'Keep practicing! You can do better! 💪';
+            }
+        }
+
+        function sendToGoogleSheets(score, timeTaken) {
+            const formData = new FormData();
+            formData.append('name', studentName);
+            formData.append('score', score);
+            formData.append('correctAnswers', correctAnswers);
+            formData.append('timeTaken', timeTaken);
+            formData.append('date', new Date().toLocaleString());
+            formData.append('quizType', 'Passive Voice Quiz');
+            
+            // Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzvhd9K2CVC9_EPkhAEYFDp8K1CBpGUWNrEAEVC4w4Q8eHh5uDFO_aaKPMcH-Tajv5U/exec';
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message));
+        }
+    </script>
+</body>
+</html>
