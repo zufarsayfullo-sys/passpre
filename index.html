@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +13,10 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Added Background Photo */
             background: 
-                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23667eea" width="1200" height="800"/><g fill-opacity="0.1"><circle fill="%23fff" cx="200" cy="150" r="80"/><circle fill="%23fff" cx="600" cy="200" r="100"/><circle fill="%23fff" cx="1000" cy="300" r="90"/><circle fill="%23fff" cx="300" cy="500" r="70"/><circle fill="%23fff" cx="800" cy="600" r="85"/><text x="100" y="100" font-size="60" fill="%23fff" opacity="0.15">ABC</text><text x="500" y="400" font-size="70" fill="%23fff" opacity="0.15">abc</text><text x="900" y="250" font-size="65" fill="%23fff" opacity="0.15">123</text><text x="200" y="650" font-size="55" fill="%23fff" opacity="0.15">?!</text><text x="700" y="150" font-size="50" fill="%23fff" opacity="0.15">✓✗</text><path d="M50,400 Q200,350 350,400" stroke="%23fff" stroke-width="3" fill="none" opacity="0.2"/><path d="M400,200 Q550,150 700,200" stroke="%23fff" stroke-width="3" fill="none" opacity="0.2"/><path d="M750,500 Q900,450 1050,500" stroke="%23fff" stroke-width="3" fill="none" opacity="0.2"/></g></svg>');
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -36,74 +36,17 @@
             animation: float 25s infinite;
         }
 
-        .shape:nth-child(1) {
-            width: 100px;
-            height: 120px;
-            background: white;
-            border-radius: 5px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .shape:nth-child(2) {
-            width: 80px;
-            height: 100px;
-            background: white;
-            border-radius: 5px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 3s;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .shape:nth-child(3) {
-            width: 90px;
-            height: 110px;
-            background: white;
-            border-radius: 5px;
-            top: 80%;
-            left: 20%;
-            animation-delay: 6s;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .shape:nth-child(4) {
-            width: 70px;
-            height: 90px;
-            background: white;
-            border-radius: 5px;
-            top: 20%;
-            left: 70%;
-            animation-delay: 2s;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .shape:nth-child(5) {
-            width: 85px;
-            height: 105px;
-            background: white;
-            border-radius: 5px;
-            top: 50%;
-            left: 50%;
-            animation-delay: 4s;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
+        .shape:nth-child(1) { width: 100px; height: 120px; background: white; border-radius: 5px; top: 10%; left: 10%; animation-delay: 0s; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+        .shape:nth-child(2) { width: 80px; height: 100px; background: white; border-radius: 5px; top: 60%; left: 80%; animation-delay: 3s; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+        .shape:nth-child(3) { width: 90px; height: 110px; background: white; border-radius: 5px; top: 80%; left: 20%; animation-delay: 6s; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+        .shape:nth-child(4) { width: 70px; height: 90px; background: white; border-radius: 5px; top: 20%; left: 70%; animation-delay: 2s; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+        .shape:nth-child(5) { width: 85px; height: 105px; background: white; border-radius: 5px; top: 50%; left: 50%; animation-delay: 4s; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            50% {
-                transform: translateY(-10px) rotate(-5deg);
-            }
-            75% {
-                transform: translateY(-25px) rotate(3deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-25px) rotate(3deg); }
         }
 
         .container {
@@ -116,25 +59,23 @@
             padding: 30px;
             position: relative;
             z-index: 10;
-            max-height: 90vh;
+            max-height: 95vh;
             overflow-y: auto;
         }
 
         h1 {
-            color: #a6c1ee;
+            color: #4a90e2;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .timer {
             text-align: center;
             font-size: 1.5em;
-            color: #fbc2eb;
+            color: #e74c3c;
             margin-bottom: 20px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .progress-container {
@@ -149,27 +90,8 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .progress-bar-correct {
-            height: 100%;
-            background: linear-gradient(90deg, #27ae60, #2ecc71);
-            transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .progress-bar-incorrect {
-            height: 100%;
-            background: linear-gradient(90deg, #c0392b, #e74c3c);
-            transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
+        .progress-bar-correct { height: 100%; background: linear-gradient(90deg, #27ae60, #2ecc71); transition: width 0.3s ease; }
+        .progress-bar-incorrect { height: 100%; background: linear-gradient(90deg, #c0392b, #e74c3c); transition: width 0.3s ease; }
 
         .progress-text {
             position: absolute;
@@ -181,201 +103,83 @@
             color: #2c3e50;
             font-weight: bold;
             pointer-events: none;
-            text-shadow: 0 0 3px white;
-        }
-
-        .question-container {
-            margin-bottom: 30px;
-        }
-
-        .question-number {
-            color: #a6c1ee;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 10px;
         }
 
         .question-text {
-            font-size: 1.2em;
+            font-size: 1.3em;
             margin-bottom: 20px;
             line-height: 1.6;
             color: #2c3e50;
         }
 
-        .blank {
-            color: #fbc2eb;
-            font-weight: bold;
-        }
+        .blank { color: #3498db; font-weight: bold; text-decoration: underline; }
 
         .answer-input {
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px;
             border: 2px solid #dee2e6;
             border-radius: 10px;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
 
-        .answer-input:focus {
-            outline: none;
-            border-color: #a6c1ee;
-            box-shadow: 0 0 15px rgba(166, 193, 238, 0.3);
-            background: white;
-        }
-
-        .answer-feedback {
-            margin-top: 15px;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            display: none;
-        }
-
-        .answer-feedback.correct {
-            background: #d4edda;
-            color: #155724;
-            border: 2px solid #c3e6cb;
-        }
-
-        .answer-feedback.incorrect {
-            background: #f8d7da;
-            color: #721c24;
-            border: 2px solid #f5c6cb;
-        }
-
+        /* Center the Next button since Previous is removed */
         .nav-buttons {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-            gap: 15px;
-        }
-
-        button {
-            background: linear-gradient(135deg, #a6c1ee 0%, #fbc2eb 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(166, 193, 238, 0.3);
-            min-width: 120px;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(166, 193, 238, 0.4);
-        }
-
-        button:disabled {
-            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-            opacity: 0.6;
-        }
-
-        .results {
-            text-align: center;
-            display: none;
-        }
-
-        .results h2 {
-            color: #a6c1ee;
-            margin-bottom: 20px;
-            font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .score {
-            font-size: 3em;
-            color: #27ae60;
-            margin: 20px 0;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .score.fail {
-            color: #e74c3c;
-        }
-
-        .start-screen {
-            text-align: center;
-        }
-
-        .start-screen p {
-            font-size: 1.2em;
-            margin: 20px 0;
-            color: #555;
-        }
-
-        .start-button {
-            font-size: 1.3em;
-            padding: 15px 50px;
+            justify-content: center;
             margin-top: 20px;
         }
 
-        .quiz-content {
-            display: none;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #2c3e50;
+        button {
+            background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
             font-weight: bold;
+            transition: transform 0.2s;
         }
+
+        button:hover { transform: scale(1.05); }
+
+        .results { text-align: center; display: none; }
+        .score { font-size: 3em; font-weight: bold; margin: 20px 0; }
+        .score.fail { color: #e74c3c; }
+        .score.pass { color: #27ae60; }
 
         .form-group input {
             width: 100%;
             padding: 12px;
-            border: 2px solid #dee2e6;
+            margin-top: 10px;
             border-radius: 8px;
-            font-size: 1em;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #a6c1ee;
-            box-shadow: 0 0 10px rgba(166, 193, 238, 0.2);
+            border: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
-    <!-- Floating shapes for background animation -->
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
+    <audio id="correctSound" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+    <audio id="incorrectSound" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3"></audio>
+
+    <div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div>
 
     <div class="container">
         <h1>Passive Voice Quiz</h1>
         
-        <div class="start-screen" id="startScreen">
+        <div class="start-screen" id="startScreen" style="text-align: center;">
             <p>Test your knowledge of passive voice!</p>
-            <p>📝 10 questions per attempt</p>
-            <p>⏱️ 5 minutes to complete</p>
-            <p>🎯 Choose the correct passive form</p>
+            <p style="margin: 10px 0;">📝 10 random questions | ⏱️ 5 minutes</p>
             
-            <div class="form-group">
-                <label for="studentName">Your Name:</label>
-                <input type="text" id="studentName" placeholder="Enter your name" required>
+            <div class="form-group" style="margin: 20px 0;">
+                <label><b>Your Name:</b></label>
+                <input type="text" id="studentName" placeholder="Enter your full name">
             </div>
             
-            <button class="start-button" onclick="startQuiz()">Start Quiz</button>
+            <button onclick="startQuiz()">Start Quiz</button>
         </div>
 
-        <div class="quiz-content" id="quizContent">
+        <div class="quiz-content" id="quizContent" style="display:none">
             <div class="timer" id="timer">Time: 5:00</div>
             
             <div class="progress-container">
@@ -384,25 +188,22 @@
                 <div class="progress-text" id="progressText">0/10</div>
             </div>
 
-            <div class="question-container" id="questionContainer">
-                <div class="question-number" id="questionNumber">Question 1</div>
+            <div class="question-container">
+                <div class="question-number" id="questionNumber" style="font-weight:bold; color:#7f8c8d; margin-bottom:10px;"></div>
                 <div class="question-text" id="questionText"></div>
-                <input type="text" class="answer-input" id="answerInput" placeholder="Type your answer here..." autocomplete="off">
-                <div class="answer-feedback" id="answerFeedback"></div>
+                <input type="text" class="answer-input" id="answerInput" placeholder="Type answer here..." autocomplete="off">
             </div>
 
             <div class="nav-buttons">
-                <button id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
-                <button id="nextBtn" onclick="nextQuestion()">Next</button>
-                <button id="submitBtn" onclick="submitQuiz()" style="display: none;">Submit Quiz</button>
+                <button id="nextBtn" onclick="handleNext()">Next Question</button>
             </div>
         </div>
 
         <div class="results" id="results">
             <h2>Quiz Completed!</h2>
             <div class="score" id="finalScore"></div>
-            <p id="resultMessage"></p>
-            <button onclick="location.reload()">Take Quiz Again</button>
+            <p id="resultMessage" style="font-size: 1.2em; margin-bottom: 20px;"></p>
+            <button onclick="location.reload()">Try Again</button>
         </div>
     </div>
 
@@ -472,34 +273,18 @@
 
         let currentQuestions = [];
         let currentQuestionIndex = 0;
-        let answers = [];
-        let correctAnswers = 0;
+        let score = 0;
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let timeLeft = 300;
         let timerInterval;
-        let timeLeft = 300; // 5 minutes in seconds
         let studentName = "";
 
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
-
         function startQuiz() {
-            const nameInput = document.getElementById('studentName');
-            
-            studentName = nameInput.value.trim();
-            
-            if (!studentName) {
-                alert('Please enter your name before starting the quiz.');
-                return;
-            }
+            studentName = document.getElementById('studentName').value.trim();
+            if (!studentName) return alert("Please enter your name");
 
-            currentQuestions = shuffleArray(questionBank).slice(0, 10);
-            answers = new Array(10).fill('');
-            
+            currentQuestions = questionBank.sort(() => 0.5 - Math.random()).slice(0, 10);
             document.getElementById('startScreen').style.display = 'none';
             document.getElementById('quizContent').style.display = 'block';
             
@@ -510,159 +295,83 @@
         function startTimer() {
             timerInterval = setInterval(() => {
                 timeLeft--;
-                const minutes = Math.floor(timeLeft / 60);
-                const seconds = timeLeft % 60;
-                document.getElementById('timer').textContent = 
-                    `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
-                
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    submitQuiz();
-                }
+                let mins = Math.floor(timeLeft / 60);
+                let secs = timeLeft % 60;
+                document.getElementById('timer').textContent = `Time: ${mins}:${secs < 10 ? '0' + secs : secs}`;
+                if (timeLeft <= 0) submitQuiz();
             }, 1000);
         }
 
         function displayQuestion() {
-            const question = currentQuestions[currentQuestionIndex];
-            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1}`;
-            document.getElementById('questionText').innerHTML = question.q.replace('___', '<span class="blank">___</span>');
+            const q = currentQuestions[currentQuestionIndex];
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of 10`;
+            document.getElementById('questionText').innerHTML = q.q.replace('___', '<span class="blank">___</span>');
+            document.getElementById('answerInput').value = "";
+            document.getElementById('answerInput').focus();
             
-            const answerInput = document.getElementById('answerInput');
-            answerInput.value = answers[currentQuestionIndex] || '';
-            answerInput.focus();
+            // Allow Enter key to submit
+            document.getElementById('answerInput').onkeypress = (e) => { if(e.key === 'Enter') handleNext(); };
             
-            // Hide feedback when displaying question
-            document.getElementById('answerFeedback').style.display = 'none';
-            
-            updateNavigationButtons();
             updateProgressBar();
         }
 
-        function selectOption(option) {
-            // This function is no longer needed but kept for compatibility
-            answers[currentQuestionIndex] = option;
-            displayQuestion();
+        function handleNext() {
+            const userAns = document.getElementById('answerInput').value.trim().toLowerCase();
+            const correctAns = currentQuestions[currentQuestionIndex].correct.toLowerCase();
+
+            if (userAns === correctAns) {
+                correctCount++;
+                document.getElementById('correctSound').play();
+            } else {
+                incorrectCount++;
+                document.getElementById('incorrectSound').play();
+            }
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < 10) {
+                displayQuestion();
+            } else {
+                submitQuiz();
+            }
         }
 
         function updateProgressBar() {
-            const answered = answers.filter(a => a !== null && a !== '').length;
-            
-            // Count correct and incorrect answers so far
-            let correct = 0;
-            let incorrect = 0;
-            
-            for (let i = 0; i < answers.length; i++) {
-                if (answers[i] !== null && answers[i] !== '') {
-                    // Normalize both answers for comparison (lowercase, trim spaces)
-                    const studentAnswer = answers[i].toLowerCase().trim();
-                    const correctAnswer = currentQuestions[i].correct.toLowerCase().trim();
-                    
-                    if (studentAnswer === correctAnswer) {
-                        correct++;
-                    } else {
-                        incorrect++;
-                    }
-                }
-            }
-            
-            const correctPercentage = (correct / 10) * 100;
-            const incorrectPercentage = (incorrect / 10) * 100;
-            
-            document.getElementById('progressBarCorrect').style.width = correctPercentage + '%';
-            document.getElementById('progressBarIncorrect').style.width = incorrectPercentage + '%';
-            document.getElementById('progressText').textContent = `${answered}/10 (✓${correct} ✗${incorrect})`;
-        }
-
-        function updateNavigationButtons() {
-            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
-            
-            if (currentQuestionIndex === 9) {
-                document.getElementById('nextBtn').style.display = 'none';
-                document.getElementById('submitBtn').style.display = 'block';
-            } else {
-                document.getElementById('nextBtn').style.display = 'block';
-                document.getElementById('submitBtn').style.display = 'none';
-            }
-        }
-
-        function nextQuestion() {
-            if (currentQuestionIndex < 9) {
-                // Save current answer before moving to next question
-                const answerInput = document.getElementById('answerInput');
-                answers[currentQuestionIndex] = answerInput.value.trim();
-                
-                currentQuestionIndex++;
-                displayQuestion();
-            }
-        }
-
-        function previousQuestion() {
-            if (currentQuestionIndex > 0) {
-                // Save current answer before moving to previous question
-                const answerInput = document.getElementById('answerInput');
-                answers[currentQuestionIndex] = answerInput.value.trim();
-                
-                currentQuestionIndex--;
-                displayQuestion();
-            }
+            const total = 10;
+            document.getElementById('progressBarCorrect').style.width = (correctCount / total) * 100 + '%';
+            document.getElementById('progressBarIncorrect').style.width = (incorrectCount / total) * 100 + '%';
+            document.getElementById('progressText').textContent = `${currentQuestionIndex}/10 (✓${correctCount} ✗${incorrectCount})`;
         }
 
         function submitQuiz() {
             clearInterval(timerInterval);
-            
-            correctAnswers = 0;
-            for (let i = 0; i < currentQuestions.length; i++) {
-                if (answers[i]) {
-                    // Normalize both answers for comparison (lowercase, trim spaces)
-                    const studentAnswer = answers[i].toLowerCase().trim();
-                    const correctAnswer = currentQuestions[i].correct.toLowerCase().trim();
-                    
-                    if (studentAnswer === correctAnswer) {
-                        correctAnswers++;
-                    }
-                }
-            }
-            
-            const score = (correctAnswers / 10) * 100;
-            const timeTaken = 300 - timeLeft;
-            const minutes = Math.floor(timeTaken / 60);
-            const seconds = timeTaken % 60;
-            
-            sendToGoogleSheets(score, `${minutes}:${seconds.toString().padStart(2, '0')}`);
-            
+            const finalScore = (correctCount / 10) * 100;
+            const timeTaken = `${Math.floor((300 - timeLeft) / 60)}:${(300 - timeLeft) % 60}`;
+
+            sendToGoogleSheets(finalScore, timeTaken);
+
             document.getElementById('quizContent').style.display = 'none';
             document.getElementById('results').style.display = 'block';
             
-            const scoreElement = document.getElementById('finalScore');
-            scoreElement.textContent = `${correctAnswers}/10 (${score}%)`;
-            
-            if (score >= 70) {
-                scoreElement.className = 'score';
-                document.getElementById('resultMessage').textContent = 'Great job! You passed! 🎉';
-            } else {
-                scoreElement.className = 'score fail';
-                document.getElementById('resultMessage').textContent = 'Keep practicing! You can do better! 💪';
-            }
+            const scoreDiv = document.getElementById('finalScore');
+            scoreDiv.textContent = `${correctCount}/10 (${finalScore}%)`;
+            scoreDiv.className = finalScore >= 70 ? 'score pass' : 'score fail';
+            document.getElementById('resultMessage').textContent = finalScore >= 70 ? "Excellent work! You've mastered the Passive Voice!" : "Keep practicing! Review your verb forms and try again.";
         }
 
         function sendToGoogleSheets(score, timeTaken) {
             const formData = new FormData();
             formData.append('name', studentName);
             formData.append('score', score);
-            formData.append('correctAnswers', correctAnswers);
+            formData.append('correctAnswers', correctCount);
             formData.append('timeTaken', timeTaken);
             formData.append('date', new Date().toLocaleString());
             formData.append('quizType', 'Passive Voice Quiz');
-            
-            // Google Apps Script Web App URL
+
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzvhd9K2CVC9_EPkhAEYFDp8K1CBpGUWNrEAEVC4w4Q8eHh5uDFO_aaKPMcH-Tajv5U/exec';
-            
-            fetch(scriptURL, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => console.log('Success!', response))
-            .catch(error => console.error('Error!', error.message));
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+            .then(res => console.log('Data saved'))
+            .catch(err => console.error('Error saving data'));
         }
     </script>
 </body>
